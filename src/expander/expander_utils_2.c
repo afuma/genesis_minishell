@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander_utils_2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
+/*   By: blax <blax@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 09:27:15 by blax              #+#    #+#             */
-/*   Updated: 2024/01/31 19:35:45 by edesaint         ###   ########.fr       */
+/*   Updated: 2024/02/01 01:55:16 by blax             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,32 @@ char* append_variable_value(t_env *env, char *result, char *var_name)
     char *new_result;
 
     if (ft_strcmp(var_name, "?") == 0)
+    {
         var_value = ft_itoa(env->lst_exit);
+        if (!var_value)
+            return (NULL);
+    }
     else
+    {
         var_value = ft_strdup(get_env_name(env, var_name));
+        if (!var_value)
+            return (NULL);
+    }
     if (var_value)
     {
         new_length = ft_strlen(result) + ft_strlen(var_value) + 1;
         new_result = malloc(sizeof(char) * new_length);
+        if (!new_result)
+        {
+            free(var_value);
+            return (NULL);
+        }
         ft_strlcpy(new_result, result, new_length);
         ft_strlcat(new_result, var_value, new_length);
         free(var_value);
         return (new_result);
     }
+    free(var_value);
 
     return (ft_strdup(result));
 }

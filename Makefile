@@ -2,7 +2,7 @@
 SRC_DIR = src/
 OBJ_DIR = obj/
 
-SRC_FILES = main.c \
+SRC_FILES = off_main.c \
 			syntax/is_syntax.c \
 			syntax/syntax.c \
 			syntax/syntax_utils_1.c \

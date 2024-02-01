@@ -6,7 +6,7 @@
 /*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 08:31:10 by blax              #+#    #+#             */
-/*   Updated: 2024/01/31 23:36:17 by edesaint         ###   ########.fr       */
+/*   Updated: 2024/02/01 10:25:20 by edesaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,13 @@
 # include <stdio.h>
 # include <stdbool.h>
 # include <errno.h>
-// # include <bsd/string.h>
-// # include <stddef.h> //ft_strcmp
-
-extern int g_info;
 
 // ------------------------- MAIN ---------------------------------
 
 // main.c
 bool main_loop(t_env *my_env);
-// bool ft_main(char *command, t_env *env);
-bool ft_main(t_data *data, t_env *env);
+bool ft_main(char *command, t_env *env);
+// bool ft_main(t_data *data, t_env *env);
 
 // ------------------------- BUILTIN ---------------------------------
 
@@ -239,6 +235,7 @@ char* process_dollar_sign(t_env *env, char **str, char *result);
 char* process_text_until_next_dollar(char **str, char *result);
 
 // expander_utils_2.c
+char *get_var_value(char *result, char *var_value);
 char* append_variable_value(t_env *env, char *result, char *varName);
 char* extract_var_name(char **str);
 char* copy_until_char(char *dest, char *src, char delimiter);

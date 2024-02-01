@@ -1,5 +1,0 @@
-ls
-ls -l
-ls -lah
-ls -wc
-ls abc
